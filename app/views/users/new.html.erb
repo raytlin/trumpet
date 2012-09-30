@@ -1,0 +1,35 @@
+<h1>Create new user</h1>
+<div class="user new">
+	<h2>Create new user</h2>
+	<div class="back-link"><%= link_to("<< Back to users listing", :action => "list")%>
+	
+	<%= form_for(:user, :url => {:action => "create"}) do |f| %>
+	<%= error_messages_for(@user) %>
+	<table summary="user form fields">
+	  <tr>
+	    <th><%= f.label(:username) %></th>
+	    <td><%= f.text_field(:username) %></td>
+	  </tr>
+	  <tr>
+	    <th><%= f.label(:password) %></th>
+	    <td><%= f.text_field(:password) %></td>
+	  </tr>
+	  <tr>
+	    <th><%= f.label(:email) %></th>
+	    <td><%= f.text_field(:email) %></td>
+	  </tr>
+	  <tr>
+	    <th><%= f.label(:picture) %></th>
+	    <td><%= f.text_field(:picture) %></td>
+	  </tr>
+	  
+	</table>
+	
+	<div class="form-buttons">
+      <%= submit_tag('Create User') %>
+    </div>
+ <% end %>
+
+
+	
+</div>

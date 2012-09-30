@@ -1,0 +1,9 @@
+<h1>Access Menu</h1>
+<p>
+	<%= link_to("Users", :controller => 'users', :action => 'list')%> <br />
+	<%= link_to("Posts", :controller => 'posts', :action => 'list')%> <br />
+	<%= link_to("Free Shipping Orders", :controller => 'free_shipping_orders', :action => 'list')%> <br />
+	<%= link_to("Admins", :controller => 'admin_users', :action => 'list')%> <br />
+	
+</p>
+<p class="back-link"><%= link_to("log out", :action => 'logout')%></p>

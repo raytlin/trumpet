@@ -1,0 +1,62 @@
+<h1>This is 
+
+<% if @user.username == session[:name] %>
+	your profile
+<% else %>
+	<%= @user.username %>'s profile
+<% end %>	
+</h1>
+<% if @user.username == session[:name] %>
+	<table border="1">
+	<td>	
+	Your name is:<br /> <strong> <%= session[:name]%> </strong> <br />
+	<%= image_tag(User.find(session[:user_id]).picture ) %> <br />
+	</td>
+	<td>
+	<h2>Bio:</h2>
+	<p>Your bio is empty. Click edit to add a bio.</p>
+	<div>  <%= link_to_function 'Edit', 'alert("This feature is not supported in the free version of the TrumpetPlus(TM) trumpet community software.")', :class => 'action edit' %></div>
+	</td>
+	<td>
+		<h2>Friends:</h2>
+		<p>You have no friends. Click add to add friends. </p>
+		<div>  <%= link_to_function 'Add', 'alert("You have no friends to add because no one has added you.")', :class => 'action edit' %></div>
+	</td>
+	</table>
+<% else %>
+	<%= @user.username %>'s profile
+<% end %>
+<p>Add a comment to this profile:</p>
+<%= form_for(:post, :url => {:action => 'create_post', :id => @user.id}) do |f| %>
+<%= f.text_area(:content, :size => '40x5')%><br />
+
+<%= submit_tag("submit it!")%>
+
+
+<div><%= pluralize(@posts.size, 'post') %> found</div>
+  
+  <table class="listing" summary="Admin users list">
+    <tr>
+      <th>From</th>
+      <th>Content</th>
+     
+	  <th>Created At</th>
+      
+    </tr>
+    <% @posts.each do |post| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= link_to(post.poster_name, :action => 'profile', :id => User.find_by_username(post.poster_name).id) %> <br />
+		<%= image_tag(post.poster_pic)%></td>
+      <td><%= post.content %></td>
+
+	  <td><%= post.created_at %></td>
+	
+      <td class="actions">
+        <%= link_to_function 'Mark as favorite', 'alert("This is now your favorite")', :class => 'action edit' %>
+  
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+<% end %>

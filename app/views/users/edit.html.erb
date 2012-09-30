@@ -1,0 +1,16 @@
+<h1>Users edit</h1>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+<p><%= form_for(:user, :url => {:action => "update", :id => @user.id}) do |f| %>
+	
+	<br />Username <%= f.text_field(:username) %>
+	<br />Password <%= f.text_field(:password) %>
+	<br />Email <%= f.text_field(:email) %>
+	<br />Picture <%= f.text_field(:picture) %>
+	
+	<div class="form-buttons">
+  	  <%= submit_tag('Update User') %>
+    </div>
+  <% end %>
+</p>
+	

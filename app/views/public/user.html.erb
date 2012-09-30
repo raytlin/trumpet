@@ -1,0 +1,29 @@
+<% @page_title = "Users List" %>
+
+
+
+<div class="user list">
+  <h2>Users</h2>
+
+  
+
+  <div>We have <%= pluralize(@users.size, 'users') %>!</div>
+  
+  <table class="listing" summary="users list">
+    <tr>
+      <th>Username</th>
+     
+      
+    </tr>
+    <% @users.each do |user| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= link_to(user.username, :action => 'profile', :id => user.id) %> <br />
+			<%= image_tag(user.picture)%></td>
+     <td>this is where the bio goes</td>
+      
+     
+    </tr>
+    <% end %>
+  </table>
+
+</div>

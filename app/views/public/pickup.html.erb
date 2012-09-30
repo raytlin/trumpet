@@ -1,0 +1,20 @@
+<h1>Free pickup alternative</h1>
+<p>Instead of paying the $5 dollar shipping and handling, you can choose to pick up the cd FREE OF CHARGE. It the cd will be buried in a discreet location in BEAUTIFUL Golden Gate Park in San Francisco. Fill out the form below to apply!</p>
+<%= form_for(:free_shipping_order, :url => {:action => 'create_pickup_order', :id => session[:user_id]}) do |f| %>
+<%= error_messages_for(@free_shipping_order) %>
+<table summary="user form fields">
+  <tr>
+    <th><%= f.label(:email) %></th>
+    <td><%= f.text_field(:email) %></td>
+  </tr>
+ <tr>
+    <th><%= f.label(:email_confirmation) %></th>
+    <td><%= f.text_field(:email_confirmation) %></td>
+  </tr>
+  </tr>  
+</table>
+
+<div class="form-buttons">
+  <%= submit_tag('Submit Order') %>
+</div>
+<% end %>

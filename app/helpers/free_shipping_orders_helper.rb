@@ -1,0 +1,2 @@
+module FreeShippingOrdersHelper
+end

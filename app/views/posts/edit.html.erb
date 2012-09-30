@@ -1,0 +1,15 @@
+<h1>Post edit</h1>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+<p><%= form_for(:post, :url => {:action => "update", :id => @post.id}) do |f| %>
+	
+	<br />Content <%= f.text_area(:content, :size => '40x10') %>
+
+	
+	<br />User ID <%= f.select(:user_id, User.all.collect {|x| [x.username, x.id ]}) %>
+	
+	<div class="form-buttons">
+  	  <%= submit_tag('Update Post') %>
+    </div>
+  <% end %>
+</p>

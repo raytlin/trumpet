@@ -1,0 +1,28 @@
+<h1>Create new admin user</h1>
+<div class="amdin user new">
+	<h2>Create new admin</h2>
+	<div class="back-link"><%= link_to("<< Back to admin users listing", :action => "list")%>
+	
+	<%= form_for(:adminuser, :url => {:action => "create"}) do |f| %>
+	<%= error_messages_for(@adminuser) %>
+	<table summary="user form fields">
+	  <tr>
+	    <th><%= f.label(:username) %></th>
+	    <td><%= f.text_field(:username) %></td>
+	  </tr>
+	  <tr>
+	    <th><%= f.label(:password) %></th>
+	    <td><%= f.text_field(:password) %></td>
+	  </tr>
+	  
+	 
+	</table>
+	
+	<div class="form-buttons">
+      <%= submit_tag('Create admin User') %>
+    </div>
+ <% end %>
+
+
+	
+</div>

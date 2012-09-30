@@ -1,0 +1,40 @@
+<% @page_title = "Free Shipping Orders List" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'access', :action => 'menu'}, :class => 'back-link') %>
+
+<div class="Free Shipping Orders list">
+  <h2>Free Shipping Orders</h2>
+
+
+
+  <div><%= pluralize(@orders.size, 'free shipping order') %> found</div>
+  
+  <table class="listing" summary="Free Shipping Orders list">
+    <tr>
+      <th>Username</th>
+      <th>email</th>
+      <th>user_id</th>
+	  <th>Processed?</th>
+	  <th>Created At</th>
+      
+    </tr>
+    <% @orders.each do |order| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= order.user.username %></td>
+      <td><%= order.email %></td>
+      <td><%= order.user_id %></td>
+	  <% if order.processed == false%>
+			<td style="color:red"><strong><%= order.processed %></strong></td>
+	  <% else %>
+	        <td><%= order.processed %></td>
+	  <% end %>
+	  <td><%= order.created_at %></td>
+	  <td class="actions">
+        <%= link_to('Toggle Processed', {:action => 'processed', :id => order.id}, :class => 'action edit') %>
+	  </td>
+	
+   
+    <% end %>
+  </table>
+
+</div>
